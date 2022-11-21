@@ -1,13 +1,18 @@
 import pytest
+import pytz
+from faker import Faker
 
+from movielist.models import Movie
 from .utils import fake_cinema_data, create_fake_cinema
 from ..models import Cinema, Screening
+faker = Faker("pl_PL")
+TZ = pytz.timezone('UTC')
 
 
 @pytest.mark.django_db
 def test_add_cinema(client, set_up):
     cinemas_count = Cinema.objects.count()
-    new_cinema = create_fake_cinema()
+    new_cinema = fake_cinema_data()
     response = client.post("/cinemas/", new_cinema, format='json')
     assert response.status_code == 201
     assert Cinema.objects.count() == cinemas_count + 1
