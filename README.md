@@ -13,7 +13,9 @@ This projects is REST API creating in Django rest framework.
 
 ## How to run
 * clone repository
-* pip install -r requirements.txt
+* go to Settings-> Project-> Python Interpreter-> add interpreter-> add local interpreter
+* terminal: pip install -r requirements.txt
+
 
 
 ## Requirements
